@@ -1,0 +1,21 @@
+<p>ad-display works!</p>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Bank_Name</th>
+        <th scope="col">Bank_IFSC</th>
+        <th scope="col">Bank_Contact</th>
+        <th scope="col">Bank_E-Mail</th>
+        <th scope="col">Bank_Address</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let bank of bankarr">
+      <tr>
+        <td>{{bank.bname}}</td>
+        <td>{{bank.bifsc}}</td>
+        <td>{{bank.bcontact}}</td>
+        <td>{{bank.bemail}}</td>
+        <td>{{bank.baddress}}</td>
+      </tr>
+    </tbody>
+  </table>

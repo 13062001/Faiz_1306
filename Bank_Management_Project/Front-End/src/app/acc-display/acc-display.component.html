@@ -1,0 +1,130 @@
+<div style="margin:10px">
+    <button (click)="display('credit')" class="btn2">Credit_Amount</button>
+    <button (click)="display('debit')" class="btn2">Debit_Amount</button>
+    <button (click)="display('tran')" class="btn2">Send_Money</button>
+    <button (click)="display('hist')" class="btn2">Check_History</button>
+  <div *ngIf="account === 'credit'" style="width:28vw;height: 24vh;">
+    <div class="container"><form class="form" style="height: 20vh;justify-content: space-evenly;" (ngSubmit)="credit()">
+      <div class="row">
+        <div class="col-md box">
+          <label for="username">Credit_Amount</label>
+        </div>
+        <div class="col-md box">
+          <input type="text" id="username" name="username" [(ngModel)]="ca" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+        <button class="btn2" type="submit">Credit</button>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div *ngIf="cflag " class="container">
+      <div class="row">
+        <div class="col-md box" style="display:flex;justify-content: center;">
+          <label for="username">Current_Balance</label>
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+          <h4>{{balance}}</h4>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div *ngIf="account === 'debit'" style="width:28vw;height: 24vh;">
+    <div class="container">
+    <form class="form" style="height: 20vh;justify-content: space-evenly;" (ngSubmit)="debit()">
+      <div class="row">
+        <div class="col-md box">
+          <label for="username">Debit_Amount</label>
+        </div>
+        <div class="col-md">
+          <input type="text" id="username" name="username" [(ngModel)]="da" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+        <button class="btn2" type="submit">Debit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+    <div *ngIf="dflag " class="container">
+      <div class="row">
+        <div class="col-md box" style="display:flex;justify-content: center;">
+          <label for="username">Current_Balance</label>
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+          <h4>{{balance}}</h4>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div *ngIf="account === 'tran'" style="height: 40vh;">
+  <div class="container">
+    <form [formGroup]="fg" class="form" (ngSubmit)="tran()" style="display: flex;justify-content: space-evenly;height: 36vh;">
+      <div class="row">
+        <div class="col-md box">
+          <label for="username">To_Account_Number</label>
+        </div>
+        <div class="col-md">
+          <input type="text" id="username" name="username" formControlName="tacc" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md box">
+          <label for="username">Amount</label>
+        </div>
+        <div class="col-md">
+          <input type="text" id="username" name="username" formControlName="amt" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+        <button class="btn2" type="submit">Transact</button>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div *ngIf="tflag " class="container">
+      <div class="row">
+        <div class="col-md box" style="display:flex;justify-content: center;">
+          <label for="username">Current_Balance</label>
+        </div>
+        </div>
+      <div class="row">
+        <div class="col-md" style="display:flex;justify-content: center;">
+          <h4>{{balance}}</h4>
+        </div>
+      </div>
+    </div>
+    </div>
+  <div *ngIf="account === 'hist'" style="margin-top: 20px;">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">From_Account_Number</th>
+          <th scope="col">To_Account_Type</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let tran of tranarr">
+        <tr>
+          <td>{{tran.faccNo}}</td>
+          <td>{{tran.taccNo}}</td>
+          <td>{{tran.amount}}</td>
+          <td>{{tran.status}}</td>
+          <td>{{tran.dt}}</td>
+          <td>{{tran.time}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>

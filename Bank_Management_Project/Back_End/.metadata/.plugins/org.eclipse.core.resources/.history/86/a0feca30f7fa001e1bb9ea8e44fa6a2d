@@ -1,0 +1,18 @@
+package com.bms.repository;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.bms.model.Account;
+import com.bms.model.Bank;
+
+@Repository
+public interface BankRepository extends CrudRepository<Bank, Integer>{
+	@Query("from Bank where accNo=:accNo")
+	public Account getBank(@Param("accNo")int accNo);
+	
+	@Query("delete from Bank where accNo=:accNo")
+	public boolean deleteBank(@Param("accNo")int accNo);
+}

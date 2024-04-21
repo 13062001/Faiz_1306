@@ -1,0 +1,93 @@
+
+<div style="margin:10px">
+  <button (click)="display('admin')" class="btn2">Admin</button>
+  <button (click)="display('bank')" class="btn2">Bank</button>
+  <button (click)="display('custumer')" class="btn2">Custumer</button>
+<div *ngIf="account === 'admin'">
+  <form class="form" (ngSubmit)="onSubmit()" class="container">
+    <h2 style="width:30vw" class="box">Login Form For Admin</h2>
+    <div class="row">
+      <div class="col-md">
+        <label for="username">Admin_ID:</label>
+      </div>
+      <div class="col-md">
+        <input type="text" id="username" name="username" [(ngModel)]="adid" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <label for="password">Admin_Password:</label>
+      </div>
+      <div class="col-md">
+        <input type="password" id="password" name="password" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+      <button class="btn2" type="submit">Login</button>
+      </div>
+      <div class="col-md">
+        <button class="btn2" (click)="reg()">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="account === 'bank'">
+  <form class="form" (ngSubmit)="onSubmit()" class="container">
+    <h2 style="width:30vw" class="box">Registeration Form For Bank</h2>
+    <div class="row">
+      <div class="col-md">
+        <label for="username">Bank_ID:</label>
+      </div>
+      <div class="col-md">
+        <input type="text" id="username" name="username" [(ngModel)]="bifsc" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <label for="password">Bank_Password:</label>
+      </div>
+      <div class="col-md">
+        <input type="password" id="password" name="password" required>
+      </div>
+    </div> 
+    <div class="row">
+      <div class="col-md">
+      <button class="btn2" type="submit">Login</button>
+      </div>
+      <div class="col-md">
+        <button class="btn2" (click)="reg()">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div *ngIf="account === 'custumer'">
+  <form class="form" (ngSubmit)="onSubmit()" class="container">
+    <h2 style="width:36vw" class="box">Registeration Form For Account</h2>
+    <div class="row">
+      <div class="col-md">
+        <label for="username">Account_Number:</label>
+      </div>
+      <div class="col-md">
+        <input type="text" id="username" name="username" [(ngModel)]="accNo" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+        <label for="password">Password:</label>
+      </div>
+      <div class="col-md">
+        <input type="password" id="password" name="password" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md">
+      <button class="btn2" type="submit">Login</button>
+      </div>
+      <div class="col-md">
+        <button class="btn2" (click)="reg()">Register</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>

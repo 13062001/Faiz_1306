@@ -1,0 +1,38 @@
+<div style=" background-color: white;height: 40vh;margin: 30px 0px;width:36vw; box-shadow: 1px 2px 32px 12px red;border-radius: 20px;border: 1px solid;">
+  <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+    <h2 style="width:36vw" class="box">Registeration Form For Admin</h2>
+      <div style="height:40vh">
+        <div class="div2">
+          <div class="row">
+              <div class="col-md">
+                <label for="adid" class="box">Admin_ID:</label>
+              </div>
+              <div class="col-md">
+                <input type="text" id="username" formControlName="adid" required>
+              </div>
+            </div>
+        <div class="row">
+          <div class="col-md">
+            <label for="adname" class="box">Admin_Name:</label>
+          </div>
+          <div class="col-md">
+            <input type="text" id="username" formControlName="adname" required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <label for="adpass" class="box">Admin_Password:</label>
+          </div>
+          <div class="col-md">
+            <input type="password" id="password" formControlName="adpass" required>
+          </div>
+        </div>
+       <div class="row">
+          <div class="col-md" style="display:flex;justify-content: center;">
+              <button class ="btn" type="submit">REGISTER</button>
+          </div>
+          </div>
+  </div>
+  </div>
+</form>
+  </div>

@@ -1,0 +1,14 @@
+.div{
+    background-color: red;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btn2{
+    color: white;
+    font-weight: 500;
+}
+.cli:active{
+    background-color: white;
+    color: red;
+}

@@ -1,0 +1,102 @@
+package com.bms.service;
+import com.bms.model.Bank;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bms.model.Account;
+import com.bms.model.RBI;
+import com.bms.model.Transaction;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import com.bms.repository.HomeRepository;
+import com.bms.repository.BankRepository;
+import com.bms.repository.TranRepository;
+@Service
+public class HomeService implements RBI{
+
+	@Autowired
+	HomeRepository hr;
+	@Autowired
+	TranRepository tr;
+	@Autowired
+	BankRepository br;
+	
+	public Account createBank(Bank a) {
+		return br.save(a);
+	}
+
+	public Account retrieveBank(int accNo) {
+		return hr.getAccount(accNo);
+	}
+
+	public boolean deleteBank(int accNo) {
+		return hr.deleteAccount(accNo);
+	}
+
+	public Account updateBank(Bank a) {
+		return br.save(a);
+	}
+
+	
+	@Override
+	public Account createAccount(Account a) {
+		return hr.save(a);
+	}
+
+	@Override
+	public Account retrieveAccount(int accNo) {
+		return hr.getAccount(accNo);
+	}
+
+	@Override
+	public boolean deleteAccount(int accNo) {
+		return hr.deleteAccount(accNo);
+	}
+
+	@Override
+	public Account updateAccount(Account a) {
+		return hr.save(a);
+	}
+
+	@Override
+	public boolean transaction(int faccNo, int taccNo, double amount) {
+		Transaction tac = new Transaction();
+		tac.setFaccNo(faccNo);
+		tac.setTaccNo(taccNo);
+		Account facc = hr.getAccount(faccNo);
+		Account tacc = hr.getAccount(taccNo);
+		if(facc!=null && tacc!=null)
+		{
+		if(facc.getBalance()-amount>0)
+		{
+			tacc.setBalance(tacc.getBalance()+amount);
+			facc.setBalance(facc.getBalance()-amount);
+			hr.save(tacc);
+			hr.save(facc);
+			tac.setStatus(true);
+			return true;
+		}
+		else
+			tac.setStatus(false);
+		}
+		tac.setDt(LocalDate.now());
+		tac.setTime(LocalTime.now());
+		tr.save(tac);
+		return false;
+	}
+
+	@Override
+	public void creaditAmount(int accNo, double amount) {
+		Account acc = hr.getAccount(accNo);
+		acc.setBalance(acc.getBalance()+amount);
+	}
+
+	@Override
+	public void debitAmount(int accNo, double amount) {
+		Account acc = hr.getAccount(accNo);
+		if(acc.getBalance()-amount>=1000)
+			acc.setBalance(acc.getBalance()+amount);
+	}
+
+}

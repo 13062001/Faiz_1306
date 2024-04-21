@@ -1,0 +1,39 @@
+.container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 1px 2px 32px 12px red;
+    background-color: white;
+    height:20vh;
+    width:30;
+    border: 1px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.form{
+    display: flex;
+    height: 18vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.btn2{
+    align-self: center;
+    width: 125px;
+    border: 0px;
+    border-radius: 8px;
+    background: white;
+    color: red;
+    font-size: medium;
+    font-weight: 600;
+    margin: 2px 10px
+}
+.btn2:active{
+    background: red;
+    color: white;
+}
+.box{
+    width:16vw;
+    text-align: center;
+    border-radius: 20px;;
+}
